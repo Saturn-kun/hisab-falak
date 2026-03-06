@@ -1273,7 +1273,7 @@ function sendMsg(){let t=ui.value.trim();if(!t)return;ui.value='';addMsg(t,'user
   if(l.includes('hitung')||l.includes('awal bulan')||l.includes('hisab'))addForm();
   else addMsg('<p>Ketik "hitung" untuk mulai perhitungan awal bulan.</p><div class="qb"><button onclick="addForm()">🔢 Hitung Awal Bulan</button></div>');
 }
-window.onload=function(){addMsg('🌙 Assalamu\'alaikum!\n\nSelamat datang di Chatbot Hisab Awal Bulan Kamariah dengan metode Ad-Durr Al-Aniq.\n\nBot ini membantu Anda menghitung:\n• Waktu Ijtima\' (konjungsi bulan-matahari)\n• Data posisi Matahari & Hilal saat ghurub\n• Tinggi hilal, elongasi, azimut, dan nurul hilal\n• Prediksi awal bulan Hijriah\n\n📌 Cara menggunakan:\n• Ketik nama bulan dan tahun Hijriah\n  Contoh: \"Ramadhan 1447\"\n• Bisa tambahkan lokasi\n  Contoh: \"Syawwal 1446 di Jakarta\"\n• Tanya istilah falak\n  Contoh: \"Apa itu ijtimak?\"\n\n🏠 Default: Semarang, WIB\nSilakan kirim pertanyaan Anda! 🔭');};
+window.onload=function(){addMsg('🌙 Assalamu\'alaikum!\n\nSelamat datang di Chatbot Hisab Awal Bulan Kamariah dengan metode Ad-Durr Al-Aniq.\n\nBot ini membantu Anda menghitung:\n• Waktu Ijtima\' (konjungsi bulan-matahari)\n• Data posisi Matahari & Hilal saat ghurub\n• Tinggi hilal, elongasi, azimut, dan nurul hilal\n• Prediksi awal bulan Hijriah\n\n📌 Cara menggunakan:\n• Ketik nama bulan dan tahun Hijriah\n  Contoh: \"Ramadhan 1447\"\n• Bisa tambahkan lokasi\n  Contoh: \"Syawwal 1446 di Jakarta\"\n• Tanya istilah falak\n  Contoh: \"Apa itu ijtimak?\"\n\n🏠 Default: Semarang, WIB\nSilakan kirim pertanyaan Anda! 🔭', 'bot', true);};
 </script>
 
 <!-- CALCULATOR & CHAT LOGIC -->
@@ -1317,13 +1317,13 @@ async function sendChat() {
   }
 }
 
-function addMsg(text, type) {
+function addMsg(text, type, noScroll) {
   const div = document.createElement('div');
   div.className = 'msg msg-' + (type === 'user' ? 'user' : 'bot');
   div.style.whiteSpace = 'pre-wrap';
   div.textContent = text;
   document.getElementById('chatMessages').appendChild(div);
-  div.scrollIntoView({ behavior: 'smooth' });
+  if (!noScroll) div.scrollIntoView({ behavior: 'smooth' });
 }
 
 function addTyping() {
