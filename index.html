@@ -1424,14 +1424,20 @@ function getSessionId() {
 function doHitung() {
   const bln = parseInt(document.getElementById('cBulan').value);
   const thn = parseInt(document.getElementById('cTahun').value);
-  const latD = parseFloat(document.getElementById('cLatD').value);
-  const latM = Math.abs(parseFloat(document.getElementById('cLatM').value));
-  const latS = Math.abs(parseFloat(document.getElementById('cLatS').value));
+  const latDraw = parseFloat(document.getElementById('cLatD').value);
+  const latMraw = parseFloat(document.getElementById('cLatM').value);
+  const latSraw = parseFloat(document.getElementById('cLatS').value);
   const lonD = parseFloat(document.getElementById('cLonD').value);
-  const lonM = Math.abs(parseFloat(document.getElementById('cLonM').value));
-  const lonS = Math.abs(parseFloat(document.getElementById('cLonS').value));
+  const lonM = parseFloat(document.getElementById('cLonM').value);
+  const lonS = parseFloat(document.getElementById('cLonS').value);
   const tinggi = parseFloat(document.getElementById('cTinggi').value);
   const zona = parseFloat(document.getElementById('cZona').value);
+
+  // Jika derajat lintang negatif (LS), menit dan detik otomatis ikut negatif
+  const latSign = latDraw < 0 ? -1 : 1;
+  const latD = latDraw;
+  const latM = latSign * Math.abs(latMraw);
+  const latS = latSign * Math.abs(latSraw);
 
   try {
     const r = hitungAwalBulan(bln, thn, latD, latM, latS, lonD, lonM, lonS, tinggi, zona);
